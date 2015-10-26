@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">Split the Bill</string>
+    <string name="action_settings">User Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="amount">Bill Amount</string>
+    <string name="dollar">$</string>
+    <string name="tip">Tip %</string>
+    <string name="tipAmt">Tip Amount</string>
+    <string name="split">Split among</string>
+    <string name="round">Round Off</string>
+    <string name="bill">Total Bill</string>
+    <string name="perperson">Per Person</string>
+    <string name="calc">Calculate</string>
+    <string name="settings">Tip Calculator Settings</string>
+    <string name="defTip">Default Tip</string>
+    <string name="defTipTitle">Set the default tip</string>
+    <string name="defRound">Round Off</string>
+    <string name="defRoundTitle">Select round off preference</string>
+    <string name="defSplit">Split bill</string>
+    <string name="defSplitTitle">Split bill among</string>
+    <string name="save">Save expenses?</string>
+    <string name="saveExp">Save Bill</string>
+    <string name="about">About App</string>
+    <string name="refresh">Refresh</string>
+    <string name="archive">Bill History</string>
+    <string name="okButton"> OK </string>
+    <string name="name">Name</string>
+    <string name="date">Date</string>
+    <string name="paid">Paid</string>
+    <string name="title_activity_bill_name">Add a name</string>
+    <string name="defRoundDialogTitle">Select Item to be Rounded Off</string>
+    <string name="defaultTipValue">0</string>
+    <string name="defaultRoundOff">None</string>
+    <string name="defaultPrefValue">0</string>
+    <string-array name="roundOffEntries">
+        <item name="Tip">Round off tip</item>
+        <item name="Total">Round off total</item>
+        <item name="None">Dont round off</item>
+    </string-array>
+    <string-array name="roundOffValues">
+        <item name="Tip">Tip</item>
+        <item name="Total">Total</item>
+        <item name="None">None</item>
+    </string-array>
+
+</resources>

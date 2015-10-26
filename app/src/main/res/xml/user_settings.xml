@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/settings">
+
+        <EditTextPreference
+            android:defaultValue="@string/defaultPrefValue"
+            android:dialogTitle="@string/defTipTitle"
+            android:inputType="number"
+            android:key="tipPref"
+            android:title="@string/defTip" />
+
+        <ListPreference
+            android:defaultValue="@string/defaultRoundOff"
+            android:dialogTitle="@string/defRoundDialogTitle"
+            android:entries="@array/roundOffEntries"
+            android:entryValues="@array/roundOffValues"
+            android:key="roundOffPref"
+            android:summary="@string/defRoundTitle"
+            android:title="@string/defRound" />
+
+        <EditTextPreference
+            android:defaultValue="@string/defaultPrefValue"
+            android:dialogTitle="@string/defSplitTitle"
+            android:inputType="number"
+            android:key="splitPref"
+            android:title="@string/defSplit" />
+
+    </PreferenceCategory>
+</PreferenceScreen>

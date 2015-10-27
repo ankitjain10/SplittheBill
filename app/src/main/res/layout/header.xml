@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView
+        android:gravity="center"
+        android:text="@string/date"
+        android:id="@+id/tvDates"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.5" />
+
+    <TextView
+        android:id="@+id/tvBills"
+        android:gravity="center"
+        android:text="@string/bill"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/tvTips"
+        android:gravity="center"
+        android:text="@string/tip"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight=".5" />
+
+    <TextView
+        android:id="@+id/tvPeoples"
+        android:gravity="center"
+        android:text="@string/split"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/tvTipAmounts"
+        android:gravity="center"
+        android:text="@string/total_bill"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/tvTotalBills"
+        android:layout_width="0dp"
+        android:gravity="center"
+        android:text="@string/perperson"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+</LinearLayout>

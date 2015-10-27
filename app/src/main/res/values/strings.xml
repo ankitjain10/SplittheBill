@@ -8,7 +8,7 @@
     <string name="tipAmt">Tip Amount</string>
     <string name="split">Split among</string>
     <string name="round">Round Off</string>
-    <string name="bill">Total Bill</string>
+    <string name="total_bill">Total Bill</string>
     <string name="perperson">Per Person</string>
     <string name="calc">Calculate</string>
     <string name="settings">Tip Calculator Settings</string>
@@ -32,6 +32,7 @@
     <string name="defaultTipValue">0</string>
     <string name="defaultRoundOff">None</string>
     <string name="defaultPrefValue">0</string>
+    <string name="bill">Bill</string>
     <string-array name="roundOffEntries">
         <item name="Tip">Round off tip</item>
         <item name="Total">Round off total</item>

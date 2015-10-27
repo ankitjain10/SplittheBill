@@ -22,7 +22,7 @@
           android:id="@+id/tvFinalPP"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_alignBottom="@+id/tvPerPErson"
+          android:layout_alignBottom="@+id/tvPerPerson"
           android:layout_alignRight="@+id/tvFinalBill"
           android:textColor="@color/SeaGreen"
           android:text="PerPerson Text"
@@ -147,7 +147,7 @@
           android:textColor="@color/SeaGreen" />
 
       <TextView
-          android:id="@+id/tvPerPErson"
+          android:id="@+id/tvPerPerson"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_below="@+id/tvBill"
@@ -168,7 +168,7 @@
           android:id="@+id/tvRound"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_alignLeft="@+id/tvPerPErson"
+          android:layout_alignLeft="@+id/tvPerPerson"
           android:layout_below="@+id/sbPeople"
           android:text="@string/round"
           android:textAppearance="?android:attr/textAppearanceMedium"

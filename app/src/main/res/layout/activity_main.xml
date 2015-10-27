@@ -1,188 +1,200 @@
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".TipActivity" >
+    tools:context=".MainActivity">
 
-    <!--     <Spinner
-            android:id="@+id/spTip"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvAmount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/etBill"
-            android:layout_alignTop="@+id/tvTip" />-->
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="12dp"
+            android:text="@string/amount"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/SeaGreen" />
 
+        <EditText
+            android:id="@+id/etBill"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tvAmount"
+            android:layout_below="@+id/tvAmount"
+            android:layout_marginBottom="16dp"
+            android:ems="10"
+            android:hint="@string/dollar"
+            android:inputType="number"
+            android:paddingLeft="30dp"
+            android:textColor="@color/SeaGreen" />
 
+        <TextView
+            android:id="@+id/tvTip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tvAmount"
+            android:layout_below="@+id/etBill"
+            android:layout_marginBottom="16dp"
+            android:text="@string/tip"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/SeaGreen" />
 
-    <TextView
-        android:id="@+id/tvFinalPP"
+        <SeekBar
+            android:id="@+id/sbtip"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tvPpl"
+            android:layout_alignLeft="@+id/tvTip"
+            android:layout_marginBottom="15dp"
+            android:max="20"
+            android:progressDrawable="@drawable/progressbar"
+            android:secondaryProgress="0" />
+
+        <TextView
+            android:id="@+id/tvPpl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/sbPeople"
+            android:layout_alignLeft="@+id/sbPeople"
+            android:layout_marginBottom="16dp"
+            android:text="@string/split"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/SeaGreen" />
+
+        <SeekBar
+            android:id="@+id/sbPeople"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/spRound"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="22dp"
+            android:max="10"
+            android:paddingLeft="20dp"
+            android:progressDrawable="@drawable/progressbar"
+            android:secondaryProgress="0" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/submitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tvPerPErson"
-        android:layout_alignRight="@+id/tvFinalBill"
-        android:textColor="@color/SeaGreen"
-        android:text="PerPerson Text"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/tvAmount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="12dp"
-        android:text="@string/amount"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_gravity="center"
+        android:text="Calculate"
         android:textColor="@color/SeaGreen" />
 
-    <Spinner
-        android:id="@+id/spRound"
-        android:layout_width="150dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/tvRound"
-        android:layout_marginBottom="16dp"
-        android:paddingLeft="20dp"
-        android:textColor="@color/SeaGreen" />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvTip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/etBill"
-        android:layout_alignLeft="@+id/tvAmount"
-        android:layout_marginBottom="12dp"
-        android:text="@string/tip"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/SeaGreen" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-    <SeekBar
-        android:id="@+id/sbPeople"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/spRound"
-        android:layout_marginBottom="22dp"
-        android:layout_centerVertical="true"
-        android:max="10"
-        android:paddingLeft="20dp" />
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/tvTipAmt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/submitButton"
+                android:layout_weight="1"
+                android:text="@string/tipAmt"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/SeaGreen" />
 
-    <TextView
-        android:id="@+id/tvPeople"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/sbPeople"
-        android:layout_alignTop="@+id/sbPeople"
-        android:textColor="@color/SeaGreen"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            <TextView
+                android:id="@+id/tvFinalTip"
+                android:visibility="gone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/tvFinalPP"
+                android:layout_alignLeft="@+id/tvFinalPP"
+                android:layout_alignStart="@+id/tvFinalPP"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="Tip Text"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/SeaGreen" />
 
-    <TextView
-        android:id="@+id/tvPercent"
-        android:layout_width="wrap_content"
-        android:paddingLeft="30dp"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/sbtip"
-        android:layout_alignTop="@+id/sbtip"
-        android:textColor="@color/SeaGreen"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <TextView
-        android:id="@+id/tvPpl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/sbPeople"
-        android:layout_alignLeft="@+id/sbPeople"
-        android:layout_marginBottom="16dp"
-        android:text="@string/split"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/SeaGreen" />
+        </LinearLayout>
 
-    <EditText
-        android:id="@+id/etBill"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvAmount"
-        android:layout_below="@+id/tvAmount"
-        android:ems="10"
-        android:hint="@string/dollar"
-        android:inputType="number"
-        android:paddingLeft="30dp"
-        android:layout_marginBottom="16dp"
-        android:textColor="@color/SeaGreen" />
 
-    <TextView
-        android:id="@+id/tvFinalTip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tvTipAmt"
-        android:layout_alignBottom="@+id/tvTipAmt"
-        android:layout_alignRight="@+id/spRound"
-        android:text="Tip Text"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/SeaGreen" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tvFinalBill"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tvBill"
-        android:layout_alignBottom="@+id/tvBill"
-        android:layout_alignRight="@+id/tvFinalTip"
-        android:text="Final Bill Text"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/SeaGreen" />
+            <TextView
+                android:id="@+id/tvBill"
+                android:visibility="gone"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/tvTipAmt"
+                android:text="@string/bill"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/SeaGreen" />
 
-    <TextView
-        android:id="@+id/tvTipAmt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/sbPeople"
-        android:layout_below="@+id/spRound"
-        android:layout_marginBottom="15dp"
-        android:text="@string/tipAmt"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/SeaGreen" />
+            <TextView
+                android:id="@+id/tvFinalBill"
+                android:layout_width="0dp"
+                android:gravity="end"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/tvBill"
+                android:visibility="gone"
+                android:layout_alignRight="@+id/tvBill"
+                android:layout_below="@+id/tvFinalPP"
+                android:text="Final Bill Text"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/SeaGreen" />
 
-    <TextView
-        android:id="@+id/tvPerPErson"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvBill"
-        android:text="@string/perperson"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/SeaGreen" />
+        </LinearLayout>
 
-    <SeekBar
-        android:id="@+id/sbtip"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/tvPpl"
-        android:layout_alignLeft="@+id/tvTip"
-        android:layout_marginBottom="15dp"
-        android:max="100" />
 
-    <TextView
-        android:id="@+id/tvRound"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvPerPErson"
-        android:layout_below="@+id/sbPeople"
-        android:text="@string/round"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/SeaGreen" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tvBill"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvTipAmt"
-        android:layout_below="@+id/tvTipAmt"
-        android:text="@string/bill"
-        android:layout_marginBottom="15dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/SeaGreen" />
+            <TextView
+                android:id="@+id/tvPerPerson"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/tvBill"
+                android:text="@string/perperson"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/SeaGreen" />
 
-</RelativeLayout>
+            <TextView
+                android:id="@+id/tvFinalPP"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:layout_height="wrap_content"
+                android:text="PerPerson Text"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:visibility="gone"
+                android:textColor="@color/SeaGreen" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

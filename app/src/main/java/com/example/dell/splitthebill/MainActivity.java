@@ -1,16 +1,13 @@
 package com.example.dell.splitthebill;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -19,14 +16,15 @@ import android.widget.Toast;
 import com.example.dell.splitthebill.database.TipDbHelper;
 import com.example.dell.splitthebill.model.BillDetails;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBarChangeListener, View.OnClickListener {
+@SuppressWarnings("ALL")
+public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBarChangeListener{
     private static final String TAG = MainActivity.class.getSimpleName();
     private TipDbHelper mTipDbHelper;
-    private SQLiteDatabase db;
     private SeekBar sbTip, sbPeople;
     double bill, tip, totalBill, perPersonBill;
     double defaultBill = 0;
@@ -37,10 +35,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
     Date date = new Date();
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     private EditText etBill;
-    private Button submitButton;
     private int tipPrecent, people;
-    private int defaultTip = 0;
-    private int defaultPeople = 1;
     private TextView tvTipAmt, tvFinalTip, tvFinalBill, tvBill, tvPerPerson, tvFinalPP, tvTip, tvPpl;
 
     @Override
@@ -59,9 +54,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
         sbPeople.setOnSeekBarChangeListener(this);
     }
 
-    //private Spinner spinnerRoundOff;
     private void updateTextViews() {
-        Log.v(TAG, dateFormat.format(date).toString());
         tvTipAmt.setVisibility(View.VISIBLE);
         tvBill.setVisibility(View.VISIBLE);
         tvPerPerson.setVisibility(View.VISIBLE);
@@ -74,8 +67,6 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
     }
 
     private void initViews() {
-        submitButton = (Button) findViewById(R.id.submitButton);
-        submitButton.setOnClickListener(this);
         etBill = (EditText) findViewById(R.id.etBill);
 
         tvTipAmt = (TextView) findViewById(R.id.tvTipAmt);
@@ -108,7 +99,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                clearTextViews();
             }
         });
     }
@@ -145,10 +136,13 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
     }
 
     private void calculateBill() {
-        //bill = Double.parseDouble(etBill.getText().toString());
-        tip = bill * tipPrecent / 100.00f;
+        DecimalFormat df = new DecimalFormat("#.##");
+        tip = bill * tipPrecent / 100.00;
+        tip= Double.parseDouble(df.format(tip));
         totalBill = bill + tip;
+        totalBill= Double.parseDouble(df.format(totalBill));
         perPersonBill = totalBill / people;
+        perPersonBill= Double.parseDouble(df.format(perPersonBill));
     }
 
     private void setdefaultParameters() {
@@ -157,10 +151,13 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
         else
             bill = Double.parseDouble(etBill.getText().toString());
 
+        int defaultTip = 0;
         if (tipPrecent == 0)
             tipPrecent = defaultTip;
 
         if (people == 0 || people == 1) {
+            int defaultPeople;
+            defaultPeople = 1;
             people = defaultPeople;
         }
     }
@@ -179,31 +176,33 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         Intent actionIntent;
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            actionIntent = new Intent(this, UserSettings.class);
-            startActivity(actionIntent);
-            return true;
-        }
-        if (id == R.id.action_view_database) {
-            actionIntent = new Intent(this,
-                    AndroidDatabaseManager.class);
-            startActivity(actionIntent);
-            return true;
-        }
+        switch (id){
+            case R.id.action_settings:{
+                actionIntent = new Intent(this, UserSettings.class);
+                startActivity(actionIntent);
+                break;
+            }
+            case R.id.action_view_database:{
+                actionIntent = new Intent(this,
+                        AndroidDatabaseManager.class);
+                startActivity(actionIntent);
 
-        if (id == R.id.save) {
-            savetoDb();
-        }
-        if (id == R.id.archieve) {
-            actionIntent = new Intent(this, RecordActivity.class);
-            startActivity(actionIntent);
-            return true;
+                break;
+            }
+            case R.id.save:{
+                saveToDb();
+                break;
+            }
+            case R.id.archieve:{
+                actionIntent = new Intent(this, RecordActivity.class);
+                startActivity(actionIntent);
+                break;
+            }
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void savetoDb() {
+    private void saveToDb() {
         if (bill > 0) {
             mBillDetails = new BillDetails();
             mBillDetails.setDate(dateFormat.format(date));
@@ -213,13 +212,15 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
             mBillDetails.setTipAmount(tip);
             mBillDetails.setBillAmount(totalBill);
             mBillDetails.setAmtPerPerson(perPersonBill);
-            mBillDetails.setBillName("hello");
             mTipDbHelper = new TipDbHelper(this);
-            db = mTipDbHelper.getWritableDatabase();
             mTipDbHelper.addBillEntry(mBillDetails);
+        } else {
+            Toast.makeText(this,"Enter bill value",Toast.LENGTH_SHORT).show();
         }
-        else
-            etBill.setError("error");
+        etBill.setText("");
+        sbTip.setProgress(0);
+        sbPeople.setProgress(0);
+
     }
 
     @Override
@@ -240,16 +241,6 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
-        if (seekBar == sbTip) {
-            updateCalculation();
-            Toast.makeText(this, "Tip Progress: " + tipPrecent, Toast.LENGTH_SHORT).show();
-        } else if (seekBar == sbPeople) {
-            updateCalculation();
-            Toast.makeText(this, "People Progress: " + people, Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    @Override
-    public void onClick(View v) {
+        updateCalculation();
     }
 }

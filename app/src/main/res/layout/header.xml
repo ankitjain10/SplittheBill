@@ -6,46 +6,53 @@
 
     <TextView
         android:gravity="center"
+        android:layout_margin="2dp"
         android:text="@string/date"
-        android:id="@+id/tvDates"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1.5" />
+        android:layout_weight="1.7" />
 
     <TextView
-        android:id="@+id/tvBills"
         android:gravity="center"
+        android:layout_margin="2dp"
         android:text="@string/bill"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1" />
 
     <TextView
-        android:id="@+id/tvTips"
         android:gravity="center"
         android:text="@string/tip"
+        android:layout_margin="2dp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight=".5" />
 
     <TextView
-        android:id="@+id/tvPeoples"
         android:gravity="center"
         android:text="@string/split"
         android:layout_width="0dp"
+        android:layout_margin="2dp"
         android:layout_height="wrap_content"
         android:layout_weight="1" />
+    <TextView
+        android:gravity="center"
+        android:text="@string/tipAmt"
+        android:layout_width="0dp"
+        android:layout_margin="2dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.1" />
 
     <TextView
-        android:id="@+id/tvTipAmounts"
         android:gravity="center"
         android:text="@string/total_bill"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="2dp"
         android:layout_weight="1" />
 
     <TextView
-        android:id="@+id/tvTotalBills"
+        android:layout_margin="2dp"
         android:layout_width="0dp"
         android:gravity="center"
         android:text="@string/perperson"

@@ -12,13 +12,12 @@ public class BillDetails {
     private double tipAmount;
     private double billAmount;
     private double amtPerPerson;
-    private String billName;
 
     public BillDetails() {
     }
 
     public BillDetails(String date, double bill, int tipPercent, int people, double tipAmount,
-                       double billAmount, double amtPerPerson, String billName) {
+                       double billAmount, double amtPerPerson) {
         this.date = date;
         this.bill = bill;
         this.tipPercent = tipPercent;
@@ -26,8 +25,7 @@ public class BillDetails {
         this.tipAmount = tipAmount;
         this.billAmount = billAmount;
         this.amtPerPerson = amtPerPerson;
-        this.billName = billName;
-    }
+        }
 
     public int getId() {
         return id;
@@ -93,11 +91,8 @@ public class BillDetails {
         this.amtPerPerson = amtPerPerson;
     }
 
-    public String getBillName() {
-        return billName;
-    }
-
-    public void setBillName(String billName) {
-        this.billName = billName;
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }

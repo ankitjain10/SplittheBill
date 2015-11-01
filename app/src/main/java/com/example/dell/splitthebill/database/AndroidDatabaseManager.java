@@ -1,4 +1,4 @@
-package com.example.dell.splitthebill;
+package com.example.dell.splitthebill.database;
 //***DISCLAIMER***This code is in no way my work.I am just sharing since it helped me tremendously
 
 import android.app.Activity;
@@ -27,8 +27,6 @@ import android.widget.TableRow;
 import android.widget.TableRow.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.dell.splitthebill.database.TipDbHelper;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

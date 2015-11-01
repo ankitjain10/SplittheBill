@@ -1,7 +1,9 @@
-package com.example.dell.splitthebill;
+package com.example.dell.splitthebill.preference;
 
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
+
+import com.example.dell.splitthebill.R;
 
 /**
  * Created by dell on 10/26/2015.

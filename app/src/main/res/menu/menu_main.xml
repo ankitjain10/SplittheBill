@@ -9,25 +9,18 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/refresh"
-        android:icon="@drawable/ic_menu_refresh"
-        android:orderInCategory="101"
-        android:title="@string/saveExp"
-        app:showAsAction="always" />
-
-    <item
         android:id="@+id/save"
         android:icon="@drawable/ic_menu_save"
         android:orderInCategory="102"
         android:title="@string/saveExp"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/archieve"
         android:icon="@drawable/ic_menu_archive"
         android:orderInCategory="103"
         android:title="@string/archive"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/about"
@@ -37,6 +30,6 @@
 
     <item
         android:id="@+id/action_view_database"
-        android:title="view database" />
+        android:title="@string/view_database" />
 
 </menu>

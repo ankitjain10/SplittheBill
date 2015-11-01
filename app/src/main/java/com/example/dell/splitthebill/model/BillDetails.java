@@ -13,20 +13,6 @@ public class BillDetails {
     private double billAmount;
     private double amtPerPerson;
 
-    public BillDetails() {
-    }
-
-    public BillDetails(String date, double bill, int tipPercent, int people, double tipAmount,
-                       double billAmount, double amtPerPerson) {
-        this.date = date;
-        this.bill = bill;
-        this.tipPercent = tipPercent;
-        this.people = people;
-        this.tipAmount = tipAmount;
-        this.billAmount = billAmount;
-        this.amtPerPerson = amtPerPerson;
-        }
-
     public int getId() {
         return id;
     }
@@ -95,4 +81,5 @@ public class BillDetails {
     public String toString() {
         return super.toString();
     }
+
 }

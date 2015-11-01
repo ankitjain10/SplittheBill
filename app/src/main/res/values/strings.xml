@@ -33,6 +33,7 @@
     <string name="defaultRoundOff">None</string>
     <string name="defaultPrefValue">0</string>
     <string name="bill">Bill</string>
+    <string name="view_database">View Database</string>
     <string-array name="roundOffEntries">
         <item name="Tip">Round off tip</item>
         <item name="Total">Round off total</item>
